@@ -1,0 +1,5 @@
+<svg width="180" height="50" viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="35" fill="#0077ff" font-family="'Roboto', sans-serif" font-weight="700" font-size="30">MTF</text>
+  <text x="80" y="35" fill="#ffffff" font-family="'Roboto', sans-serif" font-weight="300" font-size="30">TECH</text>
+  <circle cx="160" cy="20" r="10" fill="#00d8c2"/>
+</svg> 

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MTFTech株式会社 - 革新的なIT技術ソリューション</title>
+    <meta name="description" content="MTFTech株式会社は革新的なIT技術で企業のデジタル変革を支援し、日本と中国のビジネス連携をサポートします。">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <!-- iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Browser compatibility meta tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0073e6">
+    <!-- Autoprefixer CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/autoprefixer@10.4.14/lib/autoprefixer.min.js"></script>
+</head>
+<body>
+    <noscript>
+        <div class="noscript-warning" style="background-color: #ffe5e5; color: #ff0000; padding: 10px; text-align: center; position: fixed; top: 0; left: 0; right: 0; z-index: 9999;">
+            <div class="container">
+                <p><strong>注意:</strong> このサイトの全機能を利用するには、JavaScriptを有効にしてください。</p>
+            </div>
+        </div>
+    </noscript>
+    
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
+    
+    <!-- ヘッダー -->
+    <header role="banner">
+        <div class="container">
+            <div class="logo">
+                <a href="#home" aria-label="MTFTech ホームページへ">
+                    <img src="assets/images/mtftech-logo.svg" alt="MTFTech Logo" class="logo-img">
+                </a>
+            </div>
+            <nav id="main-menu" role="navigation" aria-label="メインメニュー">
+                <ul>
+                    <li><a href="#home">ホーム</a></li>
+                    <li class="dropdown">
+                        <a href="#services" aria-haspopup="true" aria-expanded="false">サービス <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#china-market">01 中国市場進出の特化支援</a>
+                            <a href="#it-consulting">02 IT技術コンサルティング</a>
+                            <a href="#web-dev">03 Web系サイト・システム開発</a>
+                            <a href="#ec-dev">04 ECサイト開発・代行運営</a>
+                            <a href="#iot">05 IoTソリューション</a>
+                            <a href="#cloud">06 クラウドサービス</a>
+                            <a href="#ai">07 AI人工知能ツール開発</a>
+                            <a href="#dx-subsidy">08 DX補助金申請支援</a>
+                        </div>
+                    </li>
+                    <li><a href="#tech">強み技術</a></li>
+                    <li><a href="#projects">プロジェクト</a></li>
+                    <li><a href="#about">企業情報</a></li>
+                    <li><a href="#news">ニュース・ブログ</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                    <li class="language-switcher">
+                        <div class="current-lang">
+                            <img src="assets/images/flag-jp.svg" alt="Japanese" class="lang-flag">
+                            <span>JP</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <ul class="lang-dropdown">
+                            <li data-lang="jp" class="active">
+                                <img src="assets/images/flag-jp.svg" alt="Japanese" class="lang-flag">
+                                <span>日本語</span>
+                            </li>
+                            <li data-lang="cn">
+                                <img src="assets/images/flag-cn.svg" alt="Chinese" class="lang-flag">
+                                <span>中文</span>
+                            </li>
+                            <li data-lang="en">
+                                <img src="assets/images/flag-en.svg" alt="English" class="lang-flag">
+                                <span>English</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="メニューを開く">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero" tabindex="-1" role="region" aria-label="ヒーローセクション" id="main-content">
+        <div class="hero-carousel">
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1680319521237-a7a24f6d15b8?q=80&w=1200&auto=format&fit=crop" alt="中国市场进出服务">
+                        <div class="carousel-slide-content">
+                            <h3>中国市场进出服务</h3>
+                            <p>提供全方位的市场分析和进入策略，确保您在中国市场的成功</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop" alt="产品代理销售">
+                        <div class="carousel-slide-content">
+                            <h3>产品代理销售</h3>
+                            <p>利用我们的销售网络，将您的产品高效地推向中国消费者</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop" alt="产品推广及公司包装">
+                        <div class="carousel-slide-content">
+                            <h3>产品推广及公司包装</h3>
+                            <p>为您的企业和产品打造符合中国市场的品牌形象和推广策略</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop" alt="网站ICP备案服务">
+                        <div class="carousel-slide-content">
+                            <h3>网站ICP备案服务</h3>
+                            <p>提供中国网站备案、开发和维护的一站式解决方案</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1606836576983-8b458e75221d?q=80&w=1200&auto=format&fit=crop" alt="SNS社交推广">
+                        <div class="carousel-slide-content">
+                            <h3>SNS社交推广</h3>
+                            <p>利用微信、微博和抖音等社交媒体平台，直接触达中国消费者</p>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                    </div>
+                    <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1>革新的な<span class="highlight">テクノロジー</span>で<br>未来を創造する</h1>
+                <p>MTFTech株式会社は、最先端のIT技術で企業のデジタル変革と中国市場への進出をサポートします。</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn primary">サービスを見る</a>
+                    <a href="#contact" class="btn secondary">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="tech-circles">
+                    <div class="circle c1"></div>
+                    <div class="circle c2"></div>
+                    <div class="circle c3"></div>
+                    <div class="circuit-lines"></div>
+                    <div class="tech-particles"></div>
+                    <div class="digital-code">
+                        <pre class="code-block">01010111<br>10101010<br>01100101<br>11001010</pre>
+                        <pre class="code-block delayed">10110101<br>01010111<br>10100101<br>01011100</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tech-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,213.3C672,224,768,224,864,202.7C960,181,1056,139,1152,138.7C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">私たちの<span class="highlight">サービス</span></h2>
+            <div class="services-grid">
+                <div class="service-card" id="china-market">
+                    <div class="icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>01 中国市場進出の特化支援</h3>
+                    <p>市場調査から現地パートナー紹介、ブランディング戦略まで、中国市場進出をトータルにサポートします。</p>
+                    <a href="#china-market-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="it-consulting">
+                    <div class="icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>02 IT技術コンサルティング</h3>
+                    <p>最新技術動向の分析、IT戦略の策定、技術選定など、企業のデジタル化を支援します。</p>
+                    <a href="#it-consulting-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="web-dev">
+                    <div class="icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>03 Web系サイト・システム開発</h3>
+                    <p>企業サイトからWebアプリケーション、内部管理システムまで、ニーズに合わせた開発を提供します。</p>
+                    <a href="#web-dev-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="ec-dev">
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>04 ECサイト開発・代行運営</h3>
+                    <p>ECサイトの構築から運営代行、販売戦略の立案まで、オンライン販売をサポートします。</p>
+                    <a href="#ec-dev-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="iot">
+                    <div class="icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>05 IoTソリューション</h3>
+                    <p>センサーデバイスからデータ分析まで、モノのインターネット化による業務効率化を実現します。</p>
+                    <a href="#iot-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="cloud">
+                    <div class="icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>06 クラウドサービス</h3>
+                    <p>クラウド環境の設計、移行、運用保守まで、最適なクラウドインフラを提供します。</p>
+                    <a href="#cloud-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="ai">
+                    <div class="icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>07 AI人工知能ツール開発</h3>
+                    <p>自然言語処理、画像認識、予測分析など、AIを活用した業務自動化ツールを開発します。</p>
+                    <a href="#ai-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card" id="dx-subsidy">
+                    <div class="icon">
+                        <i class="fas fa-yen-sign"></i>
+                    </div>
+                    <h3>08 DX補助金申請支援</h3>
+                    <p>デジタルトランスフォーメーション関連の各種補助金申請をサポートし、導入コストを軽減します。</p>
+                    <a href="#dx-subsidy-detail" class="service-link">詳細を見る <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 中国市場サポートセクション -->
+    <section id="tech" class="technology">
+        <div class="china-map-bg"></div>
+        <div class="china-connection-lines"></div>
+        <div class="container">
+            <h2 class="section-title">中国市場<span class="highlight">サポート</span></h2>
+            <div class="tech-intro">
+                <p>MTFTech株式会社は、日本企業の中国市場への進出・展開を強力にサポートします。市場調査から製品販売、企業ブランディング、ウェブサイト開発、SNSマーケティングまで、ワンストップでサービスを提供しています。</p>
+            </div>
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="tech-info">
+                        <h3><span class="number">01</span> 中国市場進出の市場調査</h3>
+                        <div class="tech-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                        <p>市場規模、競合分析、消費者動向など、中国市場に関する包括的な調査サービスを提供します。貴社の製品・サービスに最適な進出戦略を策定します。</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="tech-info">
+                        <h3><span class="number">02</span> 中国市場の製品代理販売</h3>
+                        <div class="tech-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                        <p>現地の販売ネットワークを活用し、日本企業の製品を中国市場で効率的に販売します。越境ECから実店舗展開まで、様々な販売チャネルを提供します。</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="tech-info">
+                        <h3><span class="number">03</span> 製品推進と企業ブランディング</h3>
+                        <div class="tech-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                        <p>中国市場に適したマーケティング戦略の策定と実施、企業イメージの構築をサポートします。現地の文化や消費者心理を理解した効果的なブランディングを実現します。</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="tech-info">
+                        <h3><span class="number">04</span> ウェブサイトICP備案・開発・運用</h3>
+                        <div class="tech-bar">
+                            <div class="progress" style="width: 92%"></div>
+                        </div>
+                        <p>中国現地企業と連携し、ウェブサイトのICP備案取得から開発、運用までのワンストップサービスを提供します。中国のインターネット規制に準拠した安全なウェブ戦略を構築します。</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="tech-info">
+                        <h3><span class="number">05</span> SNSを活用した消費者向け推進</h3>
+                        <div class="tech-bar">
+                            <div class="progress" style="width: 88%"></div>
+                        </div>
+                        <p>微信（WeChat）、微博（Weibo）、抖音（TikTok）などの中国SNSプラットフォームを活用したプロモーション戦略を展開します。KOL/KOCマーケティングで効果的に中国の消費者にアプローチします。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-bottom">
+                <a href="#china-service" class="btn primary">中国市場サポートの詳細を見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクト展示セクション -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">プロジェクト<span class="highlight">展示</span></h2>
+            <div class="project-filter">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="software">ソフトウェア</button>
+                <button class="filter-btn" data-filter="ai">AI・機械学習</button>
+                <button class="filter-btn" data-filter="cloud">クラウド</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="software">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1581092921461-7159d045aaea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="プロジェクト1">
+                    </div>
+                    <div class="project-info">
+                        <h3>企業ERPシステム</h3>
+                        <p>大企業向けカスタムERP開発と導入</p>
+                        <a href="#" class="project-link">詳細を見る</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="ai">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="プロジェクト2">
+                    </div>
+                    <div class="project-info">
+                        <h3>顧客分析AI</h3>
+                        <p>小売業界向け顧客行動予測システム</p>
+                        <a href="#" class="project-link">詳細を見る</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="cloud">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="プロジェクト3">
+                    </div>
+                    <div class="project-info">
+                        <h3>クラウド移行</h3>
+                        <p>製造業向けインフラのクラウド移行</p>
+                        <a href="#" class="project-link">詳細を見る</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="software">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="プロジェクト4">
+                    </div>
+                    <div class="project-info">
+                        <h3>IoTプラットフォーム</h3>
+                        <p>スマートファクトリー向けIoTソリューション</p>
+                        <a href="#" class="project-link">詳細を見る</a>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <a href="#all-projects" class="btn primary">すべてのプロジェクトを見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企業情報セクション -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">企業<span class="highlight">情報</span></h2>
+                <p>MTFTech株式会社は、次世代のテクノロジーで社会とビジネスの課題を解決するIT企業です。2015年の設立以来、革新的なソリューションの開発に取り組み、多くの企業のデジタル変革を支援してきました。</p>
+                <div class="company-stats">
+                    <div class="stat">
+                        <span class="count">100+</span>
+                        <span class="label">クライアント</span>
+                    </div>
+                    <div class="stat">
+                        <span class="count">250+</span>
+                        <span class="label">プロジェクト</span>
+                    </div>
+                    <div class="stat">
+                        <span class="count">50+</span>
+                        <span class="label">専門家</span>
+                    </div>
+                </div>
+                <div class="about-cta">
+                    <a href="#about-page" class="btn primary">企業情報詳細</a>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="image-container">
+                    <div class="tech-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ニュース・ブログセクション -->
+    <section id="news" class="news">
+        <div class="container">
+            <h2 class="section-title">ニュース<span class="highlight">・ブログ</span></h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ニュース1">
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month">5月</span>
+                        </div>
+                    </div>
+                    <div class="news-info">
+                        <h3>新しいAIソリューション発表</h3>
+                        <p>当社は、最新の自然言語処理技術を活用した新しいAIソリューションを発表しました。</p>
+                        <a href="#" class="news-link">続きを読む</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ニュース2">
+                        <div class="news-date">
+                            <span class="day">22</span>
+                            <span class="month">4月</span>
+                        </div>
+                    </div>
+                    <div class="news-info">
+                        <h3>Tech Expo 2023参加のお知らせ</h3>
+                        <p>来月開催されるTech Expo 2023に出展します。ブースでは最新技術デモを実施予定です。</p>
+                        <a href="#" class="news-link">続きを読む</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ニュース3">
+                        <div class="news-date">
+                            <span class="day">10</span>
+                            <span class="month">4月</span>
+                        </div>
+                    </div>
+                    <div class="news-info">
+                        <h3>クラウドサービス機能拡張のお知らせ</h3>
+                        <p>当社のクラウドソリューションに新機能を追加しました。セキュリティと利便性が向上します。</p>
+                        <a href="#" class="news-link">続きを読む</a>
+                    </div>
+                </div>
+            </div>
+            <div class="news-cta">
+                <a href="#all-news" class="btn primary">すべてのニュースを見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">無料<span class="highlight">相談</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-info-header">
+                        <h3>中国市場進出のご相談</h3>
+                        <p>中国市場への進出や中国企業との取引に関するご質問・ご相談は、いつでもお気軽にお問い合わせください。初回相談は無料で承ります。</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <h4>東京オフィス</h4>
+                            <p>〒100-0001 東京都千代田区丸の内1-1-1</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <h4>上海オフィス</h4>
+                            <p>上海市浦東新区陸家嘴環路1000号</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="info-content">
+                            <h4>お電話</h4>
+                            <p>03-1234-5678（東京）</p>
+                            <p>+86-21-5555-8888（上海）</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h4>メール</h4>
+                            <p>info@mtftech.co.jp</p>
+                        </div>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h4>営業時間</h4>
+                        <p><span>月曜日～金曜日:</span> <span>9:00 - 18:00</span></p>
+                        <p><span>土日祝日:</span> <span>休業</span></p>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>ソーシャルメディア</h4>
+                        <div class="social-links" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:25px;">
+                            <a href="#" title="Twitter" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#1DA1F2'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-twitter" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Twitter
+                            </a>
+                            <a href="#" title="YouTube" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FF0000'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-youtube" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                YouTube
+                            </a>
+                            <a href="#" title="TikTok" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#000000'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-tiktok" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                TikTok
+                            </a>
+                            <a href="#" title="Blog" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FF6600'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fas fa-blog" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Blog
+                            </a>
+                            <a href="#" title="Redbook" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FE2C55'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fas fa-book" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Redbook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-content">
+                        <div class="form-header">
+                            <h3>お問い合わせフォーム</h3>
+                            <p>中国市場でのビジネス展開について、どのようなことでもお気軽にご相談ください。専門スタッフが48時間以内にご返信いたします。</p>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">お名前 <span class="required">*</span></label>
+                                <input type="text" id="name" placeholder="山田 太郎" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">会社名</label>
+                                <input type="text" id="company" placeholder="株式会社〇〇">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">メールアドレス <span class="required">*</span></label>
+                                <input type="email" id="email" placeholder="example@company.co.jp" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" placeholder="03-1234-5678">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inquiry-type">お問い合わせ内容 <span class="required">*</span></label>
+                            <select id="inquiry-type" required>
+                                <option value="" selected disabled>選択してください</option>
+                                <option value="market-research">市場調査について</option>
+                                <option value="product-sales">製品代理販売について</option>
+                                <option value="branding">中国向け企業・製品ブランディング</option>
+                                <option value="website">ウェブサイトICP備案・開発</option>
+                                <option value="sns">中国SNSマーケティング</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">詳細メッセージ <span class="required">*</span></label>
+                            <textarea id="message" placeholder="ご質問・ご相談内容を具体的にご記入ください" required></textarea>
+                            <div class="help-text">現在の状況や課題、目標などをお知らせいただけると、より的確なご提案が可能です。</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="how-found">当社をどのようにお知りになりましたか？</label>
+                            <select id="how-found">
+                                <option value="" selected disabled>選択してください</option>
+                                <option value="search">検索エンジン</option>
+                                <option value="sns">SNS</option>
+                                <option value="referral">知人の紹介</option>
+                                <option value="event">イベント・セミナー</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-footer">
+                            <button type="submit" class="btn primary">送信する</button>
+                            <p class="privacy-note">※ご入力いただいた個人情報は、お問い合わせへの対応および当社サービスに関するご案内以外の目的では使用いたしません。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="thank-you-message" style="display: none;">
+                        <div class="thank-you-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>お問い合わせありがとうございます</h3>
+                        <p>内容を確認の上、48時間以内に担当者よりご連絡いたします。</p>
+                        <p>中国市場進出に関するご質問は、専門スタッフが丁寧にお答えいたします。</p>
+                        <div class="next-steps">
+                            <h4>次のステップ</h4>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i> 確認メールをお送りしました</li>
+                                <li><i class="fas fa-phone"></i> 担当者から折り返しのご連絡</li>
+                                <li><i class="fas fa-handshake"></i> 初回無料相談のご案内</li>
+                            </ul>
+                        </div>
+                        <div class="thank-you-footer">
+                            <a href="#" class="btn secondary" onclick="window.location.reload()">ホームに戻る</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="partner-showcase">
+                    <h4>パートナー企業</h4>
+                    <div class="partner-carousel">
+                        <div class="partner-container">
+                            <div class="partners-wrapper">
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 1">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 2">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 3">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 4">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 5">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 6">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1542744173-8659b8e296ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 7">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 8">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1550305080-4e029753abcf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 9">
+                                </div>
+                                <div class="partner-slide">
+                                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200&q=80" alt="Tech Partner 10">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="control-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="control-next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/mtftech-logo-white.svg" alt="MTFTech Logo" class="footer-logo-img">
+                    <p>MTFTech株式会社は革新的なIT技術で企業のデジタル変革を支援し、日本と中国のビジネス連携をサポートします。</p>
+                    <div class="footer-social">
+                        <h4>ソーシャルメディア</h4>
+                        <div class="social-links" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:25px;">
+                            <a href="#" title="Twitter" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#1DA1F2'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-twitter" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Twitter
+                            </a>
+                            <a href="#" title="YouTube" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FF0000'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-youtube" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                YouTube
+                            </a>
+                            <a href="#" title="TikTok" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#000000'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fab fa-tiktok" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                TikTok
+                            </a>
+                            <a href="#" title="Blog" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FF6600'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fas fa-blog" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Blog
+                            </a>
+                            <a href="#" title="Redbook" style="display:flex; flex-direction:column; align-items:center; text-align:center; margin:0 15px 20px 0; transition: transform 0.3s ease; color:rgba(255,255,255,0.8);" 
+                               onmouseover="this.style.transform='translateY(-5px)'; this.querySelector('i').style.backgroundColor='#FE2C55'; this.style.color='white';" 
+                               onmouseout="this.style.transform='translateY(0)'; this.querySelector('i').style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.8)';">
+                                <i class="fas fa-book" style="font-size:1.8rem; margin-bottom:8px; display:flex; align-items:center; justify-content:center; width:50px; height:50px; background-color:rgba(255,255,255,0.1); border-radius:50%; transition: all 0.3s ease; color:white;"></i>
+                                Redbook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>クイックリンク</h4>
+                        <ul>
+                            <li><a href="#home">ホーム</a></li>
+                            <li><a href="#services">サービス</a></li>
+                            <li><a href="#tech">中国市場サポート</a></li>
+                            <li><a href="#projects">プロジェクト</a></li>
+                            <li><a href="#about">企業情報</a></li>
+                            <li><a href="#news">ニュース・ブログ</a></li>
+                            <li><a href="#contact">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>サービス</h4>
+                        <ul>
+                            <li><a href="#china-market">中国市場進出の特化支援</a></li>
+                            <li><a href="#it-consulting">IT技術コンサルティング</a></li>
+                            <li><a href="#web-dev">Web系サイト・システム開発</a></li>
+                            <li><a href="#ec-dev">ECサイト開発・代行運営</a></li>
+                            <li><a href="#iot">IoTソリューション</a></li>
+                            <li><a href="#cloud">クラウドサービス</a></li>
+                            <li><a href="#ai">AI人工知能ツール開発</a></li>
+                            <li><a href="#dx-subsidy">DX補助金申請支援</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>ニュースレター登録</h4>
+                        <p>最新の技術トレンドや中国市場に関する情報をお届けします</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="メールアドレス">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                        <p class="newsletter-info">購読はいつでも解除できます</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2023 MTFTech株式会社. All rights reserved.</p>
+                </div>
+                <div class="footer-policy">
+                    <a href="#">プライバシーポリシー</a>
+                    <a href="#">利用規約</a>
+                    <a href="#">サイトマップ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/browser-compatibility.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 
