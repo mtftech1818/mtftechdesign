@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线预约咨询 - MTFTech设计</title>
+    <meta name="description" content="预约MTFTech专业顾问进行在线咨询，获取关于中国市场和技术解决方案的专业建议。">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- 头部和导航 -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" alt="MTFTech Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html">首页</a></li>
+                        <li class="has-dropdown">
+                            <a href="#services">服务 <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="services.html#market-strategy">市场策略制定</a></li>
+                                <li><a href="services.html#tech-solutions">定制技术解决方案</a></li>
+                                <li><a href="services.html#legal-compliance">法律与合规顾问</a></li>
+                                <li><a href="services.html#cultural-localization">文化本地化</a></li>
+                                <li><a href="services.html#digital-marketing">数字营销解决方案</a></li>
+                                <li><a href="services.html#ecommerce">电子商务平台构建</a></li>
+                                <li><a href="services.html#supply-chain">供应链优化</a></li>
+                                <li><a href="services.html#risk-management">风险管理咨询</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                        <li class="highlight-item active"><a href="booking.html">在线预约</a></li>
+                        <li class="lang-switcher">
+                            <a href="#" class="active">中文</a>
+                            <a href="#">English</a>
+                            <a href="#">日本語</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题区域 -->
+    <section class="page-title">
+        <div class="container">
+            <h1>在线预约咨询</h1>
+            <p>预约我们的专业顾问，获取关于中国市场的定制化建议</p>
+        </div>
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+    </section>
+
+    <!-- 预约流程 -->
+    <section class="booking-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>预约流程</h2>
+                <p>只需简单三步，即可获取专业咨询服务</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="step-number">1</span>
+                    </div>
+                    <h3>选择时间</h3>
+                    <p>在日历中选择您方便的日期和时间</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="step-number">2</span>
+                    </div>
+                    <h3>提交信息</h3>
+                    <p>填写您的基本信息和咨询主题</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-video"></i>
+                        <span class="step-number">3</span>
+                    </div>
+                    <h3>参加咨询</h3>
+                    <p>通过您选择的工具参加在线咨询</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在线预约表单区域 -->
+    <section class="online-booking">
+        <div class="container">
+            <div class="booking-header">
+                <h2 id="booking-form-title">预约在线咨询</h2>
+                <p>与我们的专业顾问进行一对一咨询，获取针对您业务的定制化建议</p>
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i> 首次咨询免费
+                </div>
+            </div>
+
+            <div class="booking-container">
+                <div class="online-booking-form">
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">姓名 <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">公司名称 <span class="required">*</span></label>
+                                <input type="text" id="company" name="company" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">电子邮箱 <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">电话号码 <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-topic">咨询主题 <span class="required">*</span></label>
+                            <select id="booking-topic" name="topic" required>
+                                <option value="">请选择咨询主题</option>
+                                <option value="market-entry">中国市场进入策略</option>
+                                <option value="tech-solutions">定制技术解决方案</option>
+                                <option value="legal-compliance">法律与合规咨询</option>
+                                <option value="cultural-localization">文化本地化服务</option>
+                                <option value="digital-marketing">数字营销咨询</option>
+                                <option value="ecommerce">电子商务平台搭建</option>
+                                <option value="supply-chain">供应链优化咨询</option>
+                                <option value="risk-management">风险管理咨询</option>
+                            </select>
+                        </div>
+
+                        <div class="booking-dates">
+                            <h3>选择您希望的咨询日期和时间</h3>
+                            <p class="note">咨询时长为60分钟，请至少提前3个工作日预约，工作时间为周一至周五9:00-18:00</p>
+
+                            <div class="preferred-time">
+                                <h4>第一首选时间</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="booking-date1">日期 <span class="required">*</span></label>
+                                        <input type="date" id="booking-date1" name="date1" class="date-picker" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="booking-time1">时间 <span class="required">*</span></label>
+                                        <select id="booking-time1" name="time1" required>
+                                            <option value="">请先选择日期</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="preferred-time">
+                                <h4>第二首选时间（备选）</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="booking-date2">日期 <span class="required">*</span></label>
+                                        <input type="date" id="booking-date2" name="date2" class="date-picker" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="booking-time2">时间 <span class="required">*</span></label>
+                                        <select id="booking-time2" name="time2" required>
+                                            <option value="">请先选择日期</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-tool">偏好的咨询工具 <span class="required">*</span></label>
+                            <select id="booking-tool" name="tool" required>
+                                <option value="">请选择偏好的咨询工具</option>
+                                <option value="zoom">Zoom</option>
+                                <option value="teams">Microsoft Teams</option>
+                                <option value="wechat">微信视频</option>
+                                <option value="phone">电话咨询</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">您的咨询需求和问题 <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required placeholder="请简要描述您的业务情况和希望咨询的具体问题，以便顾问能更好地为您准备"></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">我同意MTFTech的<a href="privacy.html">隐私政策</a>和<a href="terms.html">服务条款</a> <span class="required">*</span></label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">提交预约申请</span>
+                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="booking-info">
+                    <div class="available-times">
+                        <h3>顾问可用时间</h3>
+                        <div class="weekly-schedule">
+                            <div class="day">
+                                <h4>周一</h4>
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 10:00 - 12:00</li>
+                                    <li><i class="far fa-clock"></i> 14:00 - 15:00</li>
+                                </ul>
+                            </div>
+                            <div class="day">
+                                <h4>周二</h4>
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 13:00 - 14:00</li>
+                                    <li><i class="far fa-clock"></i> 15:00 - 17:00</li>
+                                </ul>
+                            </div>
+                            <div class="day">
+                                <h4>周三</h4>
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 10:00 - 11:00</li>
+                                    <li><i class="far fa-clock"></i> 15:00 - 16:00</li>
+                                </ul>
+                            </div>
+                            <div class="day">
+                                <h4>周四</h4>
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 13:00 - 15:00</li>
+                                    <li><i class="far fa-clock"></i> 16:00 - 17:00</li>
+                                </ul>
+                            </div>
+                            <div class="day">
+                                <h4>周五</h4>
+                                <ul>
+                                    <li><i class="far fa-clock"></i> 10:00 - 12:00</li>
+                                    <li><i class="far fa-clock"></i> 15:00 - 16:00</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-benefits">
+                        <h3>咨询服务包括</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 60分钟专属一对一咨询</li>
+                            <li><i class="fas fa-check"></i> 针对您业务的专业建议</li>
+                            <li><i class="fas fa-check"></i> 咨询后的跟进邮件和资料</li>
+                            <li><i class="fas fa-check"></i> 与中国市场专家直接对话</li>
+                            <li><i class="fas fa-check"></i> 获取定制化解决方案建议</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>常见问题</h2>
+                <p>关于在线咨询预约的常见问题解答</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>如何准备咨询会议？</h3>
+                        <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>为了充分利用咨询时间，我们建议您：</p>
+                        <ul>
+                            <li>准备好您想要讨论的具体问题清单</li>
+                            <li>提前分享您的业务背景资料（可选）</li>
+                            <li>考虑您的核心业务目标和进入中国市场的时间表</li>
+                            <li>准备好关于您产品或服务的简短介绍</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>我可以更改或取消预约吗？</h3>
+                        <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>是的，您可以更改或取消预约。请至少提前24小时通过电子邮件（booking@mtftech.com）或电话联系我们。如果需要重新安排，我们会根据顾问的可用时间为您提供新的选项。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>咨询结束后会有什么跟进服务？</h3>
+                        <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>每次咨询后，我们会：</p>
+                        <ul>
+                            <li>发送咨询总结邮件，包含关键讨论点和建议</li>
+                            <li>提供相关的资源和参考材料</li>
+                            <li>如有必要，安排后续咨询或提供定制化服务方案</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>我需要付费吗？</h3>
+                        <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>首次咨询完全免费，无任何义务。这让我们能够了解您的需求，并评估我们是否能够为您提供有价值的服务。后续的咨询或定制服务将根据您的具体需求提供报价。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>客户评价</h2>
+                <p>了解其他企业如何从我们的咨询服务中受益</p>
+            </div>
+
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"MTFTech的咨询服务帮助我们避开了进入中国市场的许多常见陷阱。他们的指导让我们在3个月内就建立了本地存在，并开始获得客户。"</p>
+                        <div class="client-info">
+                            <img src="assets/img/clients/client1.jpg" alt="客户照片">
+                            <div class="info">
+                                <h4>山田健太</h4>
+                                <p>TechSolutions株式会社 - CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"与MTFTech的咨询师交流让我们对中国的电子商务生态系统有了深刻的理解。他们的建议帮助我们调整了产品策略，大大提升了市场接受度。"</p>
+                        <div class="client-info">
+                            <img src="assets/img/clients/client2.jpg" alt="客户照片">
+                            <div class="info">
+                                <h4>Sophie Laurent</h4>
+                                <p>EcoStyle - 市场总监</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="quote">"他们对中国技术法规的专业知识无与伦比。一次咨询就为我们节省了数月的研究时间，并帮助我们避免了潜在的合规问题。"</p>
+                        <div class="client-info">
+                            <img src="assets/img/clients/client3.jpg" alt="客户照片">
+                            <div class="info">
+                                <h4>Michael Weber</h4>
+                                <p>CloudSecure GmbH - CTO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA部分 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>准备好进入中国市场了吗？</h2>
+                <p>立即预约免费咨询，获取专业建议和定制化解决方案</p>
+                <a href="#booking-form-title" class="btn btn-primary book-trigger">立即预约</a>
+            </div>
+        </div>
+        <div class="shape-1"></div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/img/logo-white.png" alt="MTFTech Logo">
+                    </div>
+                    <p>专注于帮助企业进入和发展中国市场的技术与战略咨询公司。我们提供定制化解决方案，助您在中国市场取得成功。</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="WeChat"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>服务</h3>
+                    <ul>
+                        <li><a href="services.html#market-strategy">市场策略制定</a></li>
+                        <li><a href="services.html#tech-solutions">定制技术解决方案</a></li>
+                        <li><a href="services.html#legal-compliance">法律与合规顾问</a></li>
+                        <li><a href="services.html#cultural-localization">文化本地化</a></li>
+                        <li><a href="services.html#digital-marketing">数字营销解决方案</a></li>
+                        <li><a href="services.html#ecommerce">电子商务平台构建</a></li>
+                        <li><a href="services.html#supply-chain">供应链优化</a></li>
+                        <li><a href="services.html#risk-management">风险管理咨询</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>公司</h3>
+                    <ul>
+                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="about.html#team">团队</a></li>
+                        <li><a href="about.html#partners">合作伙伴</a></li>
+                        <li><a href="careers.html">职业发展</a></li>
+                        <li><a href="blog.html">博客</a></li>
+                        <li><a href="case-studies.html">案例研究</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>联系我们</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 上海市浦东新区张江高科技园区</li>
+                        <li><i class="fas fa-phone-alt"></i> +86 21 6123 4567</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@mtftech.com">info@mtftech.com</a></li>
+                    </ul>
+                    <div class="newsletter">
+                        <h3>订阅我们的通讯</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="email" placeholder="您的电子邮箱">
+                                <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MTFTech设计. 保留所有权利.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">隐私政策</a>
+                    <a href="terms.html">服务条款</a>
+                    <a href="sitemap.html">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI聊天助手触发器 -->
+    <div class="ai-chatbot-trigger">
+        <button class="ai-trigger-btn">
+            <i class="fas fa-robot"></i>
+            <span>AI助手</span>
+        </button>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript文件 -->
+    <script src="assets/js/browser-compatibility.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

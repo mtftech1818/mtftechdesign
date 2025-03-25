@@ -96,23 +96,67 @@ window.addEventListener('resize', function() {
     resizeTimeout = setTimeout(handleViewportChange, 250);
 });
 
-// Add a class when DOM is fully loaded
+// DOM加载完成后初始化所有功能
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM已加载，初始化轮播图...');
+    
+    // 初始化主要功能
+    initHeroCarousel();
+    initSmoothScroll();
+    
+    // 直接绑定轮播图导航按钮
+    const prevBtn = document.querySelector('.hero-prev');
+    const nextBtn = document.querySelector('.hero-next');
+    
+    if(prevBtn) {
+        prevBtn.onclick = function(e) {
+            e.preventDefault();
+            const carousel = window.heroCarousel;
+            if(carousel) {
+                carousel.prevSlide();
+            }
+        };
+    }
+    
+    if(nextBtn) {
+        nextBtn.onclick = function(e) {
+            e.preventDefault();
+            const carousel = window.heroCarousel;
+            if(carousel) {
+                carousel.nextSlide();
+            }
+        };
+    }
+    
+    // 绑定指示器
+    const indicators = document.querySelectorAll('.hero-indicators .indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.onclick = function(e) {
+            e.preventDefault();
+            const carousel = window.heroCarousel;
+            if(carousel) {
+                carousel.showSlide(index);
+            }
+        };
+    });
+    
     document.body.classList.add('dom-loaded');
     handleViewportChange();
-
-    // Initialize all components when DOM is fully loaded
+    window.addEventListener('resize', handleViewportChange);
+    
+    // 初始化各种UI交互功能
     initMenuToggle();
     initLanguageSwitcher();
-    initHeroCarousel();
     initParallaxEffect();
     initServiceCardsAnimation();
-    initTechBarAnimation();
-    initProjectsFilter();
     initCountAnimation();
-    initPartnersCarousel();
+    initProjectFilters();
+    initProjectModals();
+    initTestimonialSlider();
     initContactForm();
-    initNewsletterForm();
+    initScrollToTop();
+    initAIChatbot();
+    initBookingForm();
 });
 
 /**
@@ -920,4 +964,848 @@ formStylesheet.textContent = `
         background-color: #2ecc71;
     }
 `;
-document.head.appendChild(formStylesheet); 
+document.head.appendChild(formStylesheet);
+
+/**
+ * FAQ功能实现
+ * 处理FAQ项的点击交互，展开和收起答案内容
+ */
+function initFaqToggle() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length === 0) return;
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', function() {
+            // 切换当前项的激活状态
+            const isActive = item.classList.contains('active');
+            
+            // 如果需要一次只展开一个FAQ（手风琴效果），取消注释以下代码
+            // faqItems.forEach(otherItem => {
+            //     if (otherItem !== item) {
+            //         otherItem.classList.remove('active');
+            //     }
+            // });
+            
+            if (isActive) {
+                item.classList.remove('active');
+                const icon = item.querySelector('.toggle-icon i');
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            } else {
+                item.classList.add('active');
+                const icon = item.querySelector('.toggle-icon i');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        });
+    });
+}
+
+// AI チャットボット初期化
+function initAIChatbot() {
+    const chatTrigger = document.getElementById('chat-trigger');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+    
+    if (!chatTrigger || !chatBox) return;
+    
+    // チャットボットの状態管理
+    const chatbotState = {
+        conversationHistory: [],
+        context: '',
+        isFirstInteraction: true,
+        commonQuestions: [
+            '中国市場進出について相談したい',
+            'ECサイト開発のサービス内容は？',
+            'IT技術開発の料金について',
+            '中国でのプロモーション方法は？'
+        ]
+    };
+    
+    // チャットボットを表示する
+    chatTrigger.addEventListener('click', () => {
+        chatBox.classList.add('active');
+        // 入力フィールドにフォーカス
+        setTimeout(() => chatInput.focus(), 300);
+        
+        // 初回表示時のみサジェスト表示
+        if (chatbotState.isFirstInteraction) {
+            showSuggestions();
+            chatbotState.isFirstInteraction = false;
+        }
+    });
+    
+    // チャットボットを閉じる
+    chatClose.addEventListener('click', () => {
+        chatBox.classList.remove('active');
+    });
+    
+    // メッセージ送信（Enterキー）
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    // メッセージ送信（送信ボタン）
+    chatSend.addEventListener('click', sendMessage);
+    
+    // ページ内のAIチャットトリガー
+    const aiChatTriggers = document.querySelectorAll('.ai-chat-trigger');
+    aiChatTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            chatBox.classList.add('active');
+            setTimeout(() => chatInput.focus(), 300);
+            
+            // 初回表示時のみサジェスト表示
+            if (chatbotState.isFirstInteraction) {
+                showSuggestions();
+                chatbotState.isFirstInteraction = false;
+            }
+        });
+    });
+    
+    // サジェスト質問を表示する関数
+    function showSuggestions() {
+        const suggestionsDiv = document.createElement('div');
+        suggestionsDiv.className = 'chat-suggestions';
+        
+        const suggestionTitle = document.createElement('div');
+        suggestionTitle.className = 'suggestion-title';
+        suggestionTitle.textContent = 'よく聞かれる質問:';
+        suggestionsDiv.appendChild(suggestionTitle);
+        
+        const suggestionBtns = document.createElement('div');
+        suggestionBtns.className = 'suggestion-buttons';
+        
+        chatbotState.commonQuestions.forEach(question => {
+            const btn = document.createElement('button');
+            btn.className = 'suggestion-btn';
+            btn.textContent = question;
+            btn.addEventListener('click', () => {
+                chatInput.value = question;
+                sendMessage();
+                suggestionsDiv.remove();
+            });
+            suggestionBtns.appendChild(btn);
+        });
+        
+        suggestionsDiv.appendChild(suggestionBtns);
+        chatMessages.appendChild(suggestionsDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // メッセージ送信処理
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message === '') return;
+        
+        // ユーザーメッセージを表示
+        addMessage(message, 'user');
+        chatInput.value = '';
+        
+        // 会話履歴に追加
+        chatbotState.conversationHistory.push({ role: 'user', content: message });
+        
+        // 入力中アニメーション表示
+        showTypingIndicator();
+        
+        // AIの返答（会話内容に基づいてレスポンスを生成）
+        setTimeout(() => {
+            removeTypingIndicator();
+            
+            // サジェスト質問は削除
+            const suggestions = document.querySelector('.chat-suggestions');
+            if (suggestions) {
+                suggestions.remove();
+            }
+            
+            // メッセージに基づいた応答を生成
+            const response = generateResponse(message);
+            addMessage(response.message, 'bot');
+            
+            // 会話履歴に追加
+            chatbotState.conversationHistory.push({ role: 'bot', content: response.message });
+            chatbotState.context = response.context;
+            
+            // フォローアップのサジェストを表示（必要に応じて）
+            if (response.suggestions && response.suggestions.length > 0) {
+                setTimeout(() => {
+                    showFollowUpSuggestions(response.suggestions);
+                }, 500);
+            }
+            
+            // スクロールを最下部に
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1500);
+    }
+    
+    // フォローアップのサジェストを表示
+    function showFollowUpSuggestions(suggestions) {
+        const suggestionsDiv = document.createElement('div');
+        suggestionsDiv.className = 'chat-suggestions follow-up';
+        
+        const suggestionBtns = document.createElement('div');
+        suggestionBtns.className = 'suggestion-buttons';
+        
+        suggestions.forEach(suggestion => {
+            const btn = document.createElement('button');
+            btn.className = 'suggestion-btn';
+            btn.textContent = suggestion;
+            btn.addEventListener('click', () => {
+                chatInput.value = suggestion;
+                sendMessage();
+                suggestionsDiv.remove();
+            });
+            suggestionBtns.appendChild(btn);
+        });
+        
+        suggestionsDiv.appendChild(suggestionBtns);
+        chatMessages.appendChild(suggestionsDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // メッセージを追加する関数
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message';
+        
+        const messageContent = document.createElement('div');
+        messageContent.className = sender === 'user' ? 'user-message' : 'bot-message';
+        messageContent.innerHTML = text;
+        
+        messageDiv.appendChild(messageContent);
+        chatMessages.appendChild(messageDiv);
+        
+        // スクロールを最下部に
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // 入力中インジケータを表示
+    function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'chat-message typing-indicator';
+        
+        const typingContent = document.createElement('div');
+        typingContent.className = 'bot-message';
+        typingContent.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        
+        typingDiv.appendChild(typingContent);
+        chatMessages.appendChild(typingDiv);
+        
+        // スクロールを最下部に
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // 入力中インジケータを削除
+    function removeTypingIndicator() {
+        const typingIndicator = chatMessages.querySelector('.typing-indicator');
+        if (typingIndicator) {
+            chatMessages.removeChild(typingIndicator);
+        }
+    }
+    
+    // メッセージに基づいて応答を生成する関数
+    function generateResponse(message) {
+        // キーワードベースの単純なマッチング
+        const lowerMsg = message.toLowerCase();
+        
+        // 中国市場進出に関する質問
+        if (lowerMsg.includes('中国') && (lowerMsg.includes('市場') || lowerMsg.includes('進出'))) {
+            return {
+                message: `中国市場進出には様々なステップがあります：<br>
+                1. 市場調査とビジネスプラン<br>
+                2. 法的要件と規制対応<br>
+                3. パートナーシップと現地ネットワークの構築<br>
+                4. デジタルマーケティング戦略<br><br>
+                弊社のコンサルタントが詳細なご相談に対応いたします。<a href='services/market-entry.html' class='bot-link'>中国市場進出サービスの詳細を見る</a>`,
+                context: 'china_market_entry',
+                suggestions: ['具体的な成功事例を教えてください', '必要な準備は何ですか？', 'サービス料金について知りたい']
+            };
+        }
+        
+        // EC開発に関する質問
+        if ((lowerMsg.includes('ec') || lowerMsg.includes('イーコマース') || lowerMsg.includes('通販')) && 
+            (lowerMsg.includes('サイト') || lowerMsg.includes('開発') || lowerMsg.includes('構築'))) {
+            return {
+                message: `ECサイト開発・代行運営サービスでは以下をご提供しています：<br>
+                ・日本向けおよび中国向けECプラットフォーム構築<br>
+                ・越境ECソリューション<br>
+                ・在庫管理システム連携<br>
+                ・決済システム導入<br>
+                ・多言語対応<br><br>
+                <a href='services/ec-dev.html' class='bot-link'>ECサイト開発サービスの詳細はこちら</a>`,
+                context: 'ec_development',
+                suggestions: ['越境ECで販売するには？', '中国のECプラットフォームは？', '開発期間はどのくらいですか？']
+            };
+        }
+        
+        // 料金・費用に関する質問
+        if (lowerMsg.includes('料金') || lowerMsg.includes('費用') || lowerMsg.includes('価格')) {
+            return {
+                message: `各サービスの料金はプロジェクトの規模や要件によって異なります。<br>
+                個別のお見積りをご用意しておりますので、具体的なプロジェクト内容を<a href='contact.html' class='bot-link'>お問い合わせフォーム</a>からご連絡いただくか、オンライン相談をご予約ください。<br><br>
+                初回相談は無料で承っておりますので、お気軽にご連絡ください。`,
+                context: 'pricing',
+                suggestions: ['オンライン相談を予約したい', 'プロジェクトの相場を知りたい']
+            };
+        }
+        
+        // プロモーション・マーケティングに関する質問
+        if (lowerMsg.includes('プロモーション') || lowerMsg.includes('マーケティング') || lowerMsg.includes('広告')) {
+            return {
+                message: `中国市場でのプロモーション戦略には以下が含まれます：<br>
+                ・WeChat/Weiboなどのソーシャルメディアマーケティング<br>
+                ・インフルエンサー（KOL）マーケティング<br>
+                ・Baidu SEO/SEM対策<br>
+                ・動画プラットフォーム活用（DouYin/Bilibili等）<br>
+                ・オンラインイベント開催<br><br>
+                中国独自のデジタル環境に精通したマーケティングチームがサポートします。`,
+                context: 'marketing',
+                suggestions: ['中国のSNS対策について', 'KOLマーケティングとは？', '効果測定はどうするの？']
+            };
+        }
+        
+        // IoTについての質問
+        if (lowerMsg.includes('iot') || lowerMsg.includes('センサー') || lowerMsg.includes('スマートデバイス')) {
+            return {
+                message: `IoTソリューションでは、センサーデバイスからクラウドプラットフォーム、データ分析まで一貫したサービスを提供しています。<br><br>
+                産業用IoT、スマートホーム、ヘルスケアIoTなど、様々な分野での実績があります。<br>
+                <a href='services/iot.html' class='bot-link'>IoTソリューションの詳細を見る</a>`,
+                context: 'iot',
+                suggestions: ['中国でのIoT規制は？', '開発実績を知りたい']
+            };
+        }
+        
+        // AI開発に関する質問
+        if (lowerMsg.includes('ai') || lowerMsg.includes('人工知能') || lowerMsg.includes('機械学習')) {
+            return {
+                message: `AI人工知能ツール開発では、以下のようなソリューションを提供しています：<br>
+                ・自然言語処理（NLP）システム<br>
+                ・画像認識・分析システム<br>
+                ・予測分析モデル<br>
+                ・チャットボット/音声アシスタント<br>
+                ・レコメンデーションエンジン<br><br>
+                お客様のビジネスニーズに合わせたカスタムAIソリューションを開発します。<br>
+                <a href='services/ai.html' class='bot-link'>AI開発サービスの詳細はこちら</a>`,
+                context: 'ai_development',
+                suggestions: ['具体的な活用例を教えて', '開発期間はどのくらい？']
+            };
+        }
+        
+        // コンテキストに基づくフォローアップ応答
+        if (chatbotState.context === 'china_market_entry') {
+            if (lowerMsg.includes('成功事例') || lowerMsg.includes('実績')) {
+                return {
+                    message: `弊社の中国市場進出支援の成功事例をいくつかご紹介します：<br>
+                    ・日本の化粧品ブランドの中国市場参入と販売チャネル構築（6ヶ月で目標売上の130%達成）<br>
+                    ・食品メーカーの中国向けEC販売立ち上げ（年間売上450%増加）<br>
+                    ・アパレルブランドのソーシャルメディアマーケティング戦略（フォロワー数3ヶ月で10万人突破）<br><br>
+                    詳細な事例はご相談時にご紹介可能です。`,
+                    context: 'china_market_entry_cases'
+                };
+            }
+            
+            if (lowerMsg.includes('準備') || lowerMsg.includes('必要')) {
+                return {
+                    message: `中国市場進出のための準備として以下が重要です：<br>
+                    1. 中国向け製品/サービスの適応（現地ニーズ・規制対応）<br>
+                    2. 知的財産権の保護（商標登録等）<br>
+                    3. 法的要件の確認（許認可・証明書等）<br>
+                    4. パートナー選定と契約準備<br>
+                    5. 中国語コンテンツの準備<br>
+                    6. 決済システムの整備<br><br>
+                    弊社では進出準備チェックリストをご用意しております。お気軽にご相談ください。`,
+                    context: 'china_market_preparation'
+                };
+            }
+        }
+        
+        // コンテキストがec_developmentの場合のフォローアップ
+        if (chatbotState.context === 'ec_development') {
+            if (lowerMsg.includes('越境') || lowerMsg.includes('海外')) {
+                return {
+                    message: `越境ECで販売するためには：<br>
+                    1. 適切なプラットフォーム選択（Tmall Global、JD Worldwide、WeChat Mini-Programなど）<br>
+                    2. 越境物流対応（保税区活用、国際配送等）<br>
+                    3. 多通貨決済システム導入<br>
+                    4. 現地規制・税関対応<br>
+                    5. 多言語カスタマーサポート<br><br>
+                    弊社では越境EC戦略立案から運用までトータルサポートを提供しています。`,
+                    context: 'cross_border_ec'
+                };
+            }
+            
+            if (lowerMsg.includes('プラットフォーム') || lowerMsg.includes('モール')) {
+                return {
+                    message: `中国の主要ECプラットフォームには以下があります：<br>
+                    ・Tmall/Taobao（最大手のプラットフォーム）<br>
+                    ・JD.com（家電・デジタル製品に強み）<br>
+                    ・Pinduoduo（ソーシャルEコマース）<br>
+                    ・WeChat Mini-Program（ソーシャルプラットフォーム連携）<br>
+                    ・RED/Xiaohongshu（SNS+ECハイブリッド）<br>
+                    ・Douyin EC（短尺動画連携EC）<br><br>
+                    目的や商品カテゴリによって最適なプラットフォームは異なります。弊社ではご相談に基づき最適な選択をご提案いたします。`,
+                    context: 'china_ec_platforms'
+                };
+            }
+        }
+        
+        // 一般的な問い合わせ
+        if (lowerMsg.includes('問い合わせ') || lowerMsg.includes('連絡') || lowerMsg.includes('相談')) {
+            return {
+                message: `お問い合わせは以下の方法で承っております：<br>
+                1. <a href='contact.html' class='bot-link'>お問い合わせフォーム</a>からのご連絡<br>
+                2. お電話：03-1234-5678（平日9:00-18:00）<br>
+                3. メール：info@mtftech.co.jp<br>
+                4. オンライン相談予約（Zoom, Teams等）<br><br>
+                初回相談は無料で承っておりますので、お気軽にご連絡ください。`,
+                context: 'contact',
+                suggestions: ['オンライン相談を予約したい', 'どんなことを相談できますか？']
+            };
+        }
+        
+        // 会社情報に関する質問
+        if (lowerMsg.includes('会社') || lowerMsg.includes('企業') || lowerMsg.includes('mtftech')) {
+            return {
+                message: `MTFTech株式会社は、日本と中国を結ぶテクノロジーパートナーとして2015年に設立されました。<br><br>
+                【会社概要】<br>
+                ・従業員数：50名以上（中国語・日本語バイリンガルスタッフ多数）<br>
+                ・拠点：東京（本社）、上海、深セン<br>
+                ・強み：日中間のビジネス・IT開発の豊富な実績、現地ネットワーク<br><br>
+                <a href='index.html#about' class='bot-link'>会社情報の詳細はこちら</a>`,
+                context: 'company_info',
+                suggestions: ['実績について教えてください', 'どんな企業と取引がありますか？']
+            };
+        }
+        
+        // 上記のいずれにも当てはまらない場合のデフォルト応答
+        const defaultResponses = [
+            `ご質問ありがとうございます。より詳しい情報をお伝えするため、<a href='contact.html' class='bot-link'>お問い合わせフォーム</a>からご連絡いただくか、03-1234-5678までお電話ください。専門スタッフが丁寧に対応いたします。`,
+            `中国市場進出やIT開発に関する詳細は、<a href='services.html' class='bot-link'>サービス一覧ページ</a>をご覧ください。また、オンライン相談も承っておりますので、お気軽にご予約ください。`,
+            `ご質問の内容について、もう少し詳しくお聞かせいただけますか？例えば、具体的なプロジェクトについてや、お探しの情報などをお教えいただけると、より的確にご案内できます。`,
+            `申し訳ございません、ご質問の詳細な回答には専門スタッフの対応が必要かもしれません。<a href='contact.html' class='bot-link'>お問い合わせ</a>いただくか、オンライン相談をご予約いただけますでしょうか？`
+        ];
+        
+        return {
+            message: defaultResponses[Math.floor(Math.random() * defaultResponses.length)],
+            context: 'general',
+            suggestions: ['中国市場進出について知りたい', 'サービス内容を教えてください', 'お問い合わせ方法は？']
+        };
+    }
+}
+
+/**
+ * オンライン予約フォーム処理
+ * 日付選択、フォーム送信、バリデーション
+ */
+function initBookingForm() {
+    const bookingForm = document.getElementById('booking-form');
+    const dateInputs = document.querySelectorAll('.date-picker');
+    
+    // 現在の日付を取得して日付入力の最小値に設定
+    if (dateInputs.length > 0) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
+        
+        if (mm < 10) mm = '0' + mm;
+        if (dd < 10) dd = '0' + dd;
+        
+        const formattedToday = yyyy + '-' + mm + '-' + dd;
+        
+        dateInputs.forEach(input => {
+            input.setAttribute('min', formattedToday);
+            
+            // 週末（土日）を選択不可に
+            input.addEventListener('input', function() {
+                const selectedDate = new Date(this.value);
+                const day = selectedDate.getDay();
+                
+                // 0 = 日曜日, 6 = 土曜日
+                if (day === 0 || day === 6) {
+                    alert('週末は予約を受け付けておりません。平日を選択してください。');
+                    this.value = '';
+                }
+            });
+        });
+    }
+    
+    // 日付の選択時に対応する時間帯のオプションを更新
+    const date1Input = document.getElementById('booking-date1');
+    const date2Input = document.getElementById('booking-date2');
+    const time1Select = document.getElementById('booking-time1');
+    const time2Select = document.getElementById('booking-time2');
+    
+    // 時間帯の選択肢を更新する関数
+    function updateTimeOptions(dateInput, timeSelect) {
+        if (!dateInput || !timeSelect) return;
+        
+        dateInput.addEventListener('change', function() {
+            const selectedDate = new Date(this.value);
+            const day = selectedDate.getDay();
+            
+            // 曜日によって利用可能な時間帯を変更
+            // 例: 月曜と水曜は午前中のみ、火曜と木曜は午後のみなど
+            timeSelect.innerHTML = ''; // 既存のオプションをクリア
+            
+            // デフォルトのオプション
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = '選択してください';
+            timeSelect.appendChild(defaultOption);
+            
+            // 曜日別の利用可能時間
+            let availableTimes;
+            switch (day) {
+                case 1: // 月曜
+                    availableTimes = [
+                        { value: '10:00', text: '10:00 - 11:00' },
+                        { value: '11:00', text: '11:00 - 12:00' },
+                        { value: '14:00', text: '14:00 - 15:00' }
+                    ];
+                    break;
+                case 2: // 火曜
+                    availableTimes = [
+                        { value: '13:00', text: '13:00 - 14:00' },
+                        { value: '15:00', text: '15:00 - 16:00' },
+                        { value: '16:00', text: '16:00 - 17:00' }
+                    ];
+                    break;
+                case 3: // 水曜
+                    availableTimes = [
+                        { value: '10:00', text: '10:00 - 11:00' },
+                        { value: '15:00', text: '15:00 - 16:00' }
+                    ];
+                    break;
+                case 4: // 木曜
+                    availableTimes = [
+                        { value: '13:00', text: '13:00 - 14:00' },
+                        { value: '14:00', text: '14:00 - 15:00' },
+                        { value: '16:00', text: '16:00 - 17:00' }
+                    ];
+                    break;
+                case 5: // 金曜
+                    availableTimes = [
+                        { value: '10:00', text: '10:00 - 11:00' },
+                        { value: '11:00', text: '11:00 - 12:00' },
+                        { value: '15:00', text: '15:00 - 16:00' }
+                    ];
+                    break;
+                default:
+                    availableTimes = [];
+            }
+            
+            // 時間オプションを追加
+            availableTimes.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time.value;
+                option.textContent = time.text;
+                timeSelect.appendChild(option);
+            });
+        });
+    }
+    
+    // 日付フィールドの変更イベントを設定
+    if (date1Input && time1Select) {
+        updateTimeOptions(date1Input, time1Select);
+    }
+    
+    if (date2Input && time2Select) {
+        updateTimeOptions(date2Input, time2Select);
+    }
+    
+    // フォーム送信時の処理
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 簡易バリデーション
+            let isValid = true;
+            const requiredFields = bookingForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('invalid');
+                } else {
+                    field.classList.remove('invalid');
+                    field.classList.add('valid');
+                }
+            });
+            
+            // 日付が同じで時間も同じ場合はエラー
+            if (date1Input.value && date2Input.value && time1Select.value && time2Select.value) {
+                if (date1Input.value === date2Input.value && time1Select.value === time2Select.value) {
+                    alert('第一希望と第二希望が同じ日時になっています。異なる日時を選択してください。');
+                    isValid = false;
+                }
+            }
+            
+            if (isValid) {
+                // 送信ボタンにローディング表示
+                const submitBtn = bookingForm.querySelector('button[type="submit"]');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnIcon = submitBtn.querySelector('.btn-icon');
+                
+                const originalText = btnText.textContent;
+                const originalIcon = btnIcon.innerHTML;
+                
+                btnText.textContent = '送信中...';
+                btnIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                // 通常はここでAjaxを使用してサーバーに送信
+                // ここではデモとして成功を模擬
+                setTimeout(() => {
+                    // 送信成功時
+                    btnText.textContent = '予約を受け付けました';
+                    btnIcon.innerHTML = '<i class="fas fa-check"></i>';
+                    submitBtn.classList.add('success');
+                    
+                    // 成功メッセージを表示
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'booking-success';
+                    successMessage.innerHTML = `
+                        <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>ご予約ありがとうございます</h3>
+                        <p>ご予約内容を確認メールでお送りいたしました。担当者より改めてご連絡いたします。</p>
+                        <p class="booking-details">
+                            <strong>予約内容:</strong><br>
+                            日時: ${date1Input.value} ${time1Select.options[time1Select.selectedIndex].text}<br>
+                            相談内容: ${document.getElementById('booking-topic').options[document.getElementById('booking-topic').selectedIndex].text}<br>
+                            ツール: ${document.getElementById('booking-tool').options[document.getElementById('booking-tool').selectedIndex].text}
+                        </p>
+                    `;
+                    
+                    // フォームを非表示にして成功メッセージを表示
+                    bookingForm.style.display = 'none';
+                    bookingForm.parentNode.insertBefore(successMessage, bookingForm.nextSibling);
+                    
+                    // 利用可能時間の表示も非表示に
+                    const availableTimes = document.querySelector('.available-times');
+                    if (availableTimes) {
+                        availableTimes.style.display = 'none';
+                    }
+                    
+                    // ページ上部へスクロール
+                    window.scrollTo({
+                        top: successMessage.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }, 2000);
+            }
+        });
+    }
+    
+    // 予約トリガーのクリックイベント
+    const bookTrigger = document.querySelector('.book-trigger');
+    if (bookTrigger) {
+        bookTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+}
+
+// 平滑滚动功能
+function initSmoothScroll() {
+    // 获取所有导航链接和按钮
+    const links = document.querySelectorAll('.hero-buttons a, .nav-link');
+    
+    for (const link of links) {
+        link.addEventListener('click', function(e) {
+            // 只处理内部锚点链接
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                
+                // 获取目标元素ID并查找元素
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    // 计算目标位置并平滑滚动
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    
+                    window.scrollTo({
+                        top: offsetTop - 100, // 减去导航栏高度
+                        behavior: 'smooth'
+                    });
+                    
+                    // 如果在移动设备上，点击后关闭菜单
+                    const mobileMenu = document.querySelector('nav');
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        document.querySelector('.menu-toggle').classList.remove('active');
+                    }
+                }
+            }
+        });
+    }
+}
+
+// 轮播图功能
+function initHeroCarousel() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (!slides.length) {
+        console.warn('没有找到轮播图幻灯片!');
+        return;
+    }
+    
+    console.log('初始化轮播图，找到幻灯片数量:', slides.length);
+    
+    // 创建轮播图控制对象
+    const carousel = {
+        currentSlide: 0,
+        slides: slides,
+        indicators: document.querySelectorAll('.indicator'),
+        autoplayInterval: null,
+        autoplayDelay: 6000, // 6秒自动切换一次
+        
+        // 显示指定索引的幻灯片
+        showSlide: function(index) {
+            console.log('显示幻灯片:', index);
+            
+            // 确保索引在有效范围内
+            if (index < 0) index = this.slides.length - 1;
+            if (index >= this.slides.length) index = 0;
+            
+            // 隐藏所有幻灯片
+            this.slides.forEach(slide => {
+                slide.classList.remove('active');
+                
+                // 重置动画元素
+                const animatedElements = slide.querySelectorAll('.animate-fadeInRight');
+                animatedElements.forEach(el => {
+                    el.style.opacity = 0;
+                });
+            });
+            
+            // 更新指示器状态
+            this.indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            
+            // 显示当前幻灯片
+            this.slides[index].classList.add('active');
+            
+            // 触发动画
+            const currentAnimatedElements = this.slides[index].querySelectorAll('.animate-fadeInRight');
+            currentAnimatedElements.forEach(el => {
+                // 重置动画
+                el.style.animation = 'none';
+                el.offsetHeight; // 触发重排
+                el.style.animation = null;
+                
+                // 设置延迟
+                if (el.classList.contains('animation-delay-200')) {
+                    setTimeout(() => { el.style.opacity = 1; }, 200);
+                } else if (el.classList.contains('animation-delay-400')) {
+                    setTimeout(() => { el.style.opacity = 1; }, 400);
+                } else {
+                    el.style.opacity = 1;
+                }
+            });
+            
+            this.currentSlide = index;
+        },
+        
+        // 显示下一张幻灯片
+        nextSlide: function() {
+            this.showSlide(this.currentSlide + 1);
+            this.startAutoplay();
+        },
+        
+        // 显示上一张幻灯片
+        prevSlide: function() {
+            this.showSlide(this.currentSlide - 1);
+            this.startAutoplay();
+        },
+        
+        // 开始自动播放
+        startAutoplay: function() {
+            this.stopAutoplay();
+            this.autoplayInterval = setInterval(() => {
+                this.nextSlide();
+            }, this.autoplayDelay);
+        },
+        
+        // 停止自动播放
+        stopAutoplay: function() {
+            if (this.autoplayInterval) {
+                clearInterval(this.autoplayInterval);
+            }
+        },
+        
+        // 初始化轮播图
+        init: function() {
+            // 初始化显示第一张幻灯片
+            this.showSlide(0);
+            this.startAutoplay();
+            
+            // 悬停暂停
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.addEventListener('mouseenter', () => this.stopAutoplay());
+                heroSection.addEventListener('mouseleave', () => this.startAutoplay());
+            }
+            
+            // 触摸滑动支持
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            if (heroSection) {
+                heroSection.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    this.stopAutoplay();
+                }, {passive: true});
+                
+                heroSection.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const swipeThreshold = 50; // 滑动阈值
+                    
+                    if (touchEndX - touchStartX > swipeThreshold) {
+                        // 右滑，显示上一张
+                        this.prevSlide();
+                    } else if (touchStartX - touchEndX > swipeThreshold) {
+                        // 左滑，显示下一张
+                        this.nextSlide();
+                    } else {
+                        this.startAutoplay();
+                    }
+                }, {passive: true});
+            }
+            
+            // 键盘导航
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    this.prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    this.nextSlide();
+                }
+            });
+            
+            console.log('轮播图初始化完成');
+        }
+    };
+    
+    // 初始化轮播图
+    carousel.init();
+    
+    // 将轮播对象暴露给全局，便于按钮访问
+    window.heroCarousel = carousel;
+} 

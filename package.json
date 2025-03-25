@@ -1,0 +1,25 @@
+{
+  "name": "mtftech-website",
+  "version": "1.1.0",
+  "description": "MTFTech技术有限公司官方网站",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "中国市场",
+    "IT技术开发",
+    "网站开发",
+    "跨境电商"
+  ],
+  "author": "MTFTech技术有限公司",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^10.4.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mtftech-website.git"
+  }
+} 
